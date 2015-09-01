@@ -4,8 +4,10 @@
     <head data-sly-include="head.html"></head>
     <body data-sly-include="body.html"></body>
     <script>
-        if (ADB) {
-            ADB.trackState("${properties['jcr:title'] @ context='scriptString'}")
-        }
+        document.addEventListener("deviceready", function() {
+            if (ADB) {
+                ADB.trackState("${properties['jcr:title'] @ context='scriptString'}")
+            }
+        }, false);
     <script>
 </html>
