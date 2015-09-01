@@ -8,11 +8,15 @@ The application includes:
 
 * Over the Air (OTA) content updates (using a manual button press)
 * Lifecycle & Action tracking with Adobe Mobile Services
+* In-App Messaging with Adobe Mobile Services
 
 ## Requirements
 
 * AEM 6.1
-* `cordova` CLI 5.2.0+ ([Installation Instructions](https://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html))
+* [NodeJS](https://nodejs.org/) 0.10.x+
+* One of:
+    * `cordova` CLI 5.2.0+ ([Installation Instructions](https://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html))
+    * `phonegap` CLI 5.2.2+ ([Installation Instructions](http://phonegap.com/install/))
 * Adobe Mobile Services (optional)
 
 ### Limitations
@@ -29,10 +33,19 @@ The application includes:
 3. (Optional) [Configure Adobe Mobile Services](http://docs.adobe.com/docs/en/aem/6-1/develop/mobile-apps/apps/intro-to-app-analytics.html)
 4. Download the Application Source (using the dropdown menu in the PhoneGap Build section).
 5. Unzip the resulting zip file.
-6. Add the appropriate Cordova platforms, e.g.
+6. Add the appropriate PhoneGap/Cordova platforms, e.g.
 
-    `$ cordova platform add ios`
+    `$ phonegap platform add ios`
     
 7. Run/emulate the application, e.g.
 
-    `$ cordova emulate ios`
+    `$ phonegap emulate ios`
+
+### Updating
+
+To update the content within the application:
+
+1. Ensure you have an AEM publish instance running and that the Update URL in the AEM App is properly configured.
+2. Modify the home screen in AEM Apps (e.g. change the text or add an image).
+3. Stage and Publish a content update.
+4. Within the application, click the Check for Update button.
