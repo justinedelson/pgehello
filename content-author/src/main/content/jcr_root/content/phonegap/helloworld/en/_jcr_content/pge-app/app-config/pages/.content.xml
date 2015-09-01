@@ -6,4 +6,8 @@
     includeImages="{Boolean}false"
     path="../../../../home"
     targetRootDirectory="www"
-    type="mobileapppages"/>
+    type="mobileapppages">
+    <parameters
+        jcr:primaryType="nt:unstructured"
+        appExport="{Boolean}true"/>
+</jcr:root>
