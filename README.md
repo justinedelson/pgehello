@@ -23,7 +23,7 @@ The application includes:
 
 1. Install both content packages by running this command from the project root:
 
-    $ mvn -PautoInstallPackage clean install
+    `$ mvn -PautoInstallPackage clean install`
 
 2. Navigate to the Apps Control Center, i.e. open [http://localhost:4502/libs/mobileapps/admin/content/dashboard.html/content/phonegap/helloworld/shell](http://localhost:4502/libs/mobileapps/admin/content/dashboard.html/content/phonegap/helloworld/shell) in your browser.
 3. (Optional) [Configure Adobe Mobile Services](http://docs.adobe.com/docs/en/aem/6-1/develop/mobile-apps/apps/intro-to-app-analytics.html)
@@ -31,8 +31,8 @@ The application includes:
 5. Unzip the resulting zip file.
 6. Add the appropriate Cordova platforms, e.g.
 
-    $ cordova platform add ios
+    `$ cordova platform add ios`
     
 7. Run/emulate the application, e.g.
 
-    $ cordova emulate ios
+    `$ cordova emulate ios`
