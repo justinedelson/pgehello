@@ -1,0 +1,11 @@
+<!DOCTYPE HTML>
+<html data-content-package-name="${inheritedPageProperties['phonegap-contentPackageName'] || 'en'}">
+
+    <head data-sly-include="head.html"></head>
+    <body data-sly-include="body.html"></body>
+    <script>
+        if (ADB) {
+            ADB.trackState("${properties['jcr:title'] @ context='scriptString'}")
+        }
+    <script>
+</html>

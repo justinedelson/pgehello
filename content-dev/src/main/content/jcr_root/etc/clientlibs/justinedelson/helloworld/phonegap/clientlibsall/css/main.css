@@ -1,0 +1,13 @@
+body {
+    background-color: white;
+    margin-top: 5px;
+}
+.app-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+#pge-app-update {
+    margin-top: 10px;
+}

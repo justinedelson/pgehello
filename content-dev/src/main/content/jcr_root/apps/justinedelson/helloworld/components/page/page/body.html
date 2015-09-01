@@ -1,0 +1,13 @@
+<div class="app-container">
+    <div class="app">
+        <sly data-sly-resource="${'content-par' @ resourceType='wcm/foundation/components/parsys'}"/>
+    </div>
+    <button id="pge-app-update">Check for Update</button>
+</div>
+
+<script type="text/javascript"
+    data-sly-use.frameworkContentExporterUtils="${'frameworkContentExporterUtils.js'}"
+    data-sly-test="${wcmmode.disabled}"
+    src="${frameworkContentExporterUtils.cordovaJsPath}"></script>
+<sly data-sly-use.clientLib="${'/libs/granite/sightly/templates/clientlib.html'}"
+     data-sly-call="${clientLib.js @ categories='apps.justinedelson.hellowoldpge.all'}" />

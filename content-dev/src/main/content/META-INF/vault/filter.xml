@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/justinedelson/helloworld"/>
+    <filter root="/etc/clientlibs/justinedelson/helloworld/phonegap"/>
+    <filter root="/etc/designs/justinedelson/helloworld/phonegap"/>
+    <filter root="/content/phonegap/helloworld/shell">
+        <exclude pattern="/content/phonegap/helloworld/shell/jcr:content/reports"/>
+    </filter>
+</workspaceFilter>
