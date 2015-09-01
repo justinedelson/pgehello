@@ -17,11 +17,7 @@ The application includes:
 * One of:
     * `cordova` CLI 5.2.0+ ([Installation Instructions](https://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html))
     * `phonegap` CLI 5.2.2+ ([Installation Instructions](http://phonegap.com/install/))
-* Adobe Mobile Services (optional)
-
-### Limitations
-
-* This project currently does not work with PhoneGap Build. Only command line builds are possible.
+* Adobe Mobile Services account (optional)
 
 ## Usage
 
