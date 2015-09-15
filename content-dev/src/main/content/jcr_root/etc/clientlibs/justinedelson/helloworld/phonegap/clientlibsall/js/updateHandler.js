@@ -33,25 +33,25 @@
                         if (isUpdateAvailable) {
                             // Confirm if the user would like to update now
                             navigator.notification.confirm('Update is available, would you like to install it now?',
-                                    function onConfirm(buttonIndex) {
+                                function onConfirm(buttonIndex) {
+                                    if (buttonIndex == 1) {
+                                        // user selected 'Update'
                                         if (ADB) {
                                             ADB.trackAction("DownloadUpdate");
                                         }
-                                        if (buttonIndex == 1) {
-                                            // user selected 'Update'
-                                                contentUpdater.updateContentPackageByName(contentPackageName,
-                                                        function callback(error, pathToContent) {
-                                                            updating = false;
-                                                            enable(button);
-                                                            if (error) {
-                                                                return navigator.notification.alert(error, null, 'Error');
-                                                            }
-                                                            window.location.reload( true );
-                                                        });
-                                        }
-                                   },
-                                   'Content Update',               // title
-                                   ['Update', 'Later']     // button labels
+                                        contentUpdater.updateContentPackageByName(contentPackageName,
+                                            function callback(error, pathToContent) {
+                                                updating = false;
+                                                enable(button);
+                                                if (error) {
+                                                    return navigator.notification.alert(error, null, 'Error');
+                                                }
+                                                window.location.reload( true );
+                                            });
+                                    }
+                               },
+                               'Content Update',               // title
+                               ['Update', 'Later']     // button labels
                             );
                         } else {
                             updating = false;
