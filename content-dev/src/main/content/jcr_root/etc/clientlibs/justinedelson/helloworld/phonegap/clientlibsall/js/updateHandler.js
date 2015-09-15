@@ -1,4 +1,4 @@
-(function(contentUpdate, contentUtils, $) {
+(function(contentUpdate, $) {
     $(function(){
         var contentPackageName = $("html").data("content-package-name"),
             updating = false,
@@ -63,4 +63,4 @@
         });
         
     });
-})(CQ.mobile.contentUpdate, CQ.mobile.contentUtils, $);
+})(CQ.mobile.contentUpdate, Zepto);
