@@ -5,8 +5,8 @@
     <body data-sly-include="body.html"></body>
     <script>
         document.addEventListener("deviceready", function() {
-            if (ADB) {
-                ADB.trackState("${properties['jcr:title'] @ context='scriptString'}")
+            if (window.ADB) {
+                window.ADB.trackState("${properties['jcr:title'] @ context='scriptString'}")
             }
         }, false);
     <script>

@@ -16,8 +16,8 @@
             if (updating) {
                 return;
             }
-            if (ADB) {
-                ADB.trackAction('CheckForUpdate');
+            if (window.ADB) {
+                window.ADB.trackAction('CheckForUpdate');
             }
             updating = true;
             disable(button);
@@ -36,8 +36,8 @@
                                 function onConfirm(buttonIndex) {
                                     if (buttonIndex == 1) {
                                         // user selected 'Update'
-                                        if (ADB) {
-                                            ADB.trackAction("DownloadUpdate");
+                                        if (window.ADB) {
+                                            window.ADB.trackAction("DownloadUpdate");
                                         }
                                         contentUpdater.updateContentPackageByName(contentPackageName,
                                             function callback(error, pathToContent) {
