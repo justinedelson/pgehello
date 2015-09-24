@@ -15,10 +15,10 @@ The application includes:
 ## Requirements
 
 * AEM 6.1
-* [NodeJS](https://nodejs.org/) 0.10.x+
+* [NodeJS](https://nodejs.org/) 0.10.x+ (*not* 4.x)
 * One of:
-    * `cordova` CLI 5.2.0+ ([Installation Instructions](https://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html))
-    * `phonegap` CLI 5.2.2+ ([Installation Instructions](http://phonegap.com/install/))
+    * `cordova` CLI 5.3.1+ ([Installation Instructions](https://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html))
+    * `phonegap` CLI 5.3.4+ ([Installation Instructions](http://phonegap.com/install/))
 * Adobe Mobile Services account (optional)
 
 ## Usage
