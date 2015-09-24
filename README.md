@@ -2,6 +2,8 @@
 
 This project contains an AEM Apps project demonstrating the simplest PhoneGap Enterprise application possible. The "Hello World" of AEM Apps. It is intentionally not particular attractive. It can be considered the opposite of the [Kitchen Sink](https://github.com/blefebvre/aem-phonegap-kitchen-sink) sample app.
 
+A detailed guide to the anatomy of this project can be found [here](https://github.com/justinedelson/pgehello/blob/master/anatomy.md).
+
 ## Features
 
 The application includes:
