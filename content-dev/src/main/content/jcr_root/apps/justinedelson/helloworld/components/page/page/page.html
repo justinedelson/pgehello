@@ -2,12 +2,16 @@
 <html data-content-package-name="${inheritedPageProperties['phonegap-contentPackageName'] || 'en'}">
 
     <head data-sly-include="head.html"></head>
-    <body data-sly-include="body.html"></body>
-    <script>
-        document.addEventListener("deviceready", function() {
-            if (window.ADB) {
-                window.ADB.trackState("${properties['jcr:title'] @ context='scriptString'}")
-            }
-        }, false);
-    <script>
+    <body>
+        <sly data-sly-include="body.html"></sly>
+    
+        <script>
+            document.addEventListener("deviceready", function() {
+                if (window.ADB) {
+                    window.ADB.trackState("${properties['jcr:title'] @ context='scriptString'}")
+                }
+            }, false);
+        <script>
+    </body>
+
 </html>
