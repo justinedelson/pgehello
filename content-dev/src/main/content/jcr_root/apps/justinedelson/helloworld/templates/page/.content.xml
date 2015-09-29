@@ -6,7 +6,6 @@
     allowedPaths="[/content/phonegap/helloworld(/.*)?]"
     ranking="{Long}-3">
     <jcr:content
-        cq:designPath="/etc/designs/phonegap/justinedelson/helloworld"
         jcr:primaryType="cq:PageContent"
         sling:resourceType="justinedelson/helloworld/components/page/page"/>
 </jcr:root>
