@@ -1,8 +1,11 @@
 (function(contentUpdate, $) {
     $(function(){
         var contentPackageName = $("html").data("content-package-name"),
+            appName = $("html").data("application-name"),
             updating = false,
-            contentUpdater = contentUpdate();
+            contentUpdater = contentUpdate({
+                id : appName
+            });
 
         function disable($element) {
             $element.prop("disabled", "disabled");
