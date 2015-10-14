@@ -25,13 +25,9 @@ As with most AEM projects, PGE Hello World contains AEM Components and Templates
 
 In a AEM Apps PhoneGap Enterprise application, the Splash Page is displayed on application load and is responsible for ensuring that the initial content of the application is moved to the proper location. By default, the content of a PhoneGap application is contained in a read-only area of the device's file system to a read-write area so that when the content is updated using Content Sync, it can be overwritten. Since the entire application is present in this read-write location, the update payloads from ContentSync only need to include the exact files that were affected by the update.
 
-All of the integration code required to do this content move is provided in the `mobileapps/components/splash-page` page component and the `cq.mobile.content-sync` Client Library. The only reason for an application-specific Splash Page component is to provide a specific visual look. In this case, this Splash Page simply has a yellow background.
+All of the integration code required to do this content move is provided in the `mobileapps/components/splash-page-content-sync-2` page component and the `cq.mobile.content-sync-2` Client Library. The only reason for an application-specific Splash Page component is to provide a specific visual look. In this case, this Splash Page simply has a yellow background.
 
-Since `mobileapps/components/splash-page` is implemented in JSP, the custom Splash Page component defines the included Client Library in `headlibs.jsp` and `bodylibs.jsp`. The referenced Client Library, in `/apps/justinedelson/helloworld/components/page/splash-page/clientlibs` has a single CSS file and embeds three existing Client Libraries:
-
-* `angularjs` - although the PGE Hello World application does not use AngularJS, the Splash Page does.
-* `cq.mobile.foundation.angular` - this library provides some basic utilities for integrating AngularJS with the AEM Apps framework.
-* `cq.mobile.content-sync` - this library provides the JavaScript implementation of the Content Sync client.
+Since `mobileapps/components/splash-page-content-sync-2` is implemented in JSP, the custom Splash Page component defines the included Client Library in `headlibs.jsp` and `bodylibs.jsp`. The referenced Client Library, in `/apps/justinedelson/helloworld/components/page/splash-page/clientlibs` has a single CSS file and embeds the  Client Library with the category `cq.mobile.content-sync-2`.
 
 #### Page Component
 
@@ -44,6 +40,13 @@ The top-level `<html>` element includes a data attribute named `data-content-pac
        data-content-package-name="${inheritedPageProperties['phonegap-contentPackageName'] || 'en'}"
 
 This property will be set on the application's home screen, as seen below.
+
+
+##### `data-application-name`
+
+Similarly, the top-level `<html>` element includes a data attribute named `data-application-name`. This is needed by the JavaScript code when it initializes the `contentUpdater` object. The `id` property passed to the `contentUpdate` function *must* be the same as that used during the Splash Screen. As a result, even though this Hello World application does not use AngularJS, we use the same default value as is specified in `/libs/mobileapps/components/splash-page-content-sync-2/splash-page-content-sync-2.jsp` (`AEMAngularApp`).
+
+        data-application-name="${inheritedPageProperties['applicationName'] || 'AEMAngularApp'}"
 
 ##### Update Button
 
@@ -83,7 +86,7 @@ The Client Library and Design Settings, in `/etc/clientlibs/justinedelson/hellow
 
 #### Update Button Handler
 
-The one significant piece of JavaScript code is the click event handler for the Check for Update button described above. This script is initialized with the `CQ.mobile.contentUpdate` function as well as the global Zepto object, which is part of the `cq.mobile.content-sync` Client Library. The script first reads the `data-content-package-name` attribute on the root `html` element (see above) and calls the `contentUpdate` function to create a new instance of the Content Update object, called `contentUpdater`. It then registers a click handler for the button.
+The one significant piece of JavaScript code is the click event handler for the Check for Update button described above. This script is initialized with the `CQ.mobile.contentUpdate` function as well as the global Zepto object, which is part of the `cq.mobile.content-sync-2` Client Library. The script first reads the `data-content-package-name` and `data-application-name` attributes on the root `html` element (see above) and calls the `contentUpdate` function to create a new instance of the Content Update object, called `contentUpdater`. It then registers a click handler for the button.
 
 When the button is clicked, `contentUpdater.isContentPackageUpdateAvailable()` is called with the content package name retrieved from the `data-content-package-name` attribute. This function (as its name suggests) checks with the AEM publish environment to see if an updated version of the named content package is available. Based on the response, the function will call the provided callback function. If there is an update available, the user is prompted to install the update. This prompt is performed using the [Cordova Dialogs Plugin](https://github.com/apache/cordova-plugin-dialogs).
 
@@ -178,23 +181,16 @@ When specifying a Cordova plugin in the `config.xml` file, you can provide eithe
 For the purpose of this simple application, the following plugins are necessary:
 
     <plugin name="ADBMobile" spec="https://github.com/Adobe-Marketing-Cloud/mobile-services#2e32d30badba8791cef8f58646244c807728edd8" />
-    <plugin name="cordova-plugin-file" spec="2.1.0" />
-    <plugin name="cordova-plugin-file-transfer" spec="1.2.1"/>
+    <plugin name="cordova-plugin-file-transfer" spec="1.0.0"/>
     <plugin name="cordova-plugin-whitelist" spec="1.0.0" />
     <plugin name="cordova-plugin-dialogs" spec="1.1.1"/>
-    <plugin name="org.chromium.zip" spec="2.1.0"/>
+    <plugin name="phonegap-plugin-contentsync" spec="1.1.12" />
 
 ###### `ADBMobile`
 
 The `ABDMobile` plugin is a Cordova wrapper around the native Adobe Mobile Services SDK. In this case, it is responsible for sending analytics signals to Adobe Mobile Services and receiving In-App Messages.
 
 More information can be found at [https://marketing.adobe.com/resources/help/en_US/mobile/ios/phonegap_methods.html](https://marketing.adobe.com/resources/help/en_US/mobile/ios/phonegap_methods.html).
-
-###### `cordova-plugin-file`
-
-The `cordova-plugin-file` plugin provides an API to access the device's filesystem. It is used by both the application initialization and Content Sync processes to write files to the application's read-write data area.
-
-More information can be found at [https://github.com/apache/cordova-plugin-file](https://github.com/apache/cordova-plugin-file).
 
 ###### `cordova-plugin-file-transfer`
 
@@ -214,12 +210,11 @@ The `cordova-plugin-dialogs` plugin provides an API for showing native dialogs. 
 
 More information can be found at [https://github.com/apache/cordova-plugin-dialogs](https://github.com/apache/cordova-plugin-dialogs).
 
-###### `org.chromium.zip`
+###### `phonegap-plugin-contentsync`
 
-The `org.chromium.zip` plugin, as the name suggests, provides an API for unzipping ZIP archives. It is used by the Content Sync process to unzip the downloaded Content Sync file.
+The `phonegap-plugin-contentsync` plugin provides the actual application logic necessary to download and cache hosted content such as the content sync packages used by AEM Apps.
 
-More information can be found at [https://github.com/MobileChromeApps/cordova-plugin-zip](https://github.com/MobileChromeApps/cordova-plugin-zip).
-
+More information can be found at [https://github.com/phonegap/phonegap-plugin-contentsync](https://github.com/phonegap/phonegap-plugin-contentsync).
 
 ## `content-author`
 
