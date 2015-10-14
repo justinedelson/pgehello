@@ -104,6 +104,9 @@ When the button is clicked, `contentUpdater.isContentPackageUpdateAvailable()` i
         });
 
 ![Update Dialog](images/update-dialog.png)
+<!--
+![Update Dialog](https://www.evernote.com/l/ADlze7hCFKNGIYro10W3NvGHMEcl7CZayIUB/image.png)
+-->
 
 If an update is available and the user selects the appropriate button, `contentUpdater.updateContentPackageByName()` is called, again with the content package name. Assuming this update is successful, the current screen is reloaded:
 
@@ -136,6 +139,9 @@ The application shell is represented by a single `cq:Page` node, at `/content/ph
 The most complex content within the shell is the content sync configurations. These configurations are used to export content from AEM to actually create the mobile application, either by downloading a ZIP file and running PhoneGap commands on the command line or by sending content to the PhoneGap Build cloud service. As seen above, there are actually two configurations: `/content/phonegap/helloworld/shell/jcr:content/pge-app/helloworld` is used for PhoneGap Build and for Staging source downloads. `/content/phonegap/helloworld/shell/jcr:content/pge-app/helloworld-dev` is used for Development source downloads.
 
 ![Download Dialog](images/download.png)
+<!--
+![Download Dialog](https://www.evernote.com/l/ADmypofzOh9NTpA_XmSHxxD8SVFI6LL2OoAB/image.png)
+-->
 
 While `/content/phonegap/helloworld/shell/jcr:content/pge-app/helloworld` and `/content/phonegap/helloworld/shell/jcr:content/pge-app/helloworld-dev` are very similar in this case, they do have different values for the `autoCreateFirstUpdateBeforeImport` and `autoFillBeforeImport` properties on the `en` and `shell` child nodes. For the production version, `autoCreateFirstUpdateBeforeImport` is set to `true`, meaning that when the application is built for the first time, a content package update will be created. In the development version, `autoFillBeforeImport` is set to `true`, meaning that the application will simply be populated with the current content set.
 
