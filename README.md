@@ -14,12 +14,16 @@ The application includes:
 
 ## Requirements
 
-* AEM 6.1
+* AEM 6.1 with Apps Feature Pack 2
 * [NodeJS](https://nodejs.org/) 0.10.x+ (*not* 4.x)
 * One of:
     * `cordova` CLI 5.3.1+ ([Installation Instructions](https://cordova.apache.org/docs/en/4.0.0/guide_cli_index.md.html))
     * `phonegap` CLI 5.3.4+ ([Installation Instructions](http://phonegap.com/install/))
 * Adobe Mobile Services account (optional)
+
+## Apps Feature Pack 2
+
+This application now requires the installation of AEM 6.1 Apps FP2. You can download this feature pack from [Package Share](https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq610/featurepack2/cq-6.1.0-apps-featurepack). There are also updates for the sample applications, available as a [separate package](https://www.adobeaemcloud.com/content/marketplace/marketplaceProxy.html?packagePath=/content/companies/public/adobe/packages/cq610/featurepack2/cq-6.1.0-apps-featurepack-samples)
 
 ## Usage
 
